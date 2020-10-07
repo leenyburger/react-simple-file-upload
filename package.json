@@ -1,10 +1,10 @@
 {
   "name": "react-simple-file-upload",
-  "version": "0.0.0",
+  "version": "0.0.1-beta.1",
   "description": "Simple File Upload as a React component",
-  "author": "ccummings",
+  "author": "Curtis Cummings <curtis@pixelplicity.com>",
   "license": "MIT",
-  "repository": "Aquilio/react-simple-file-upload",
+  "repository": "pixelplicity/react-simple-file-upload",
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.js",
