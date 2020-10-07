@@ -28,4 +28,4 @@ const File Editor = () => (
 
 ## License
 
-MIT © [Aquil.io](https://github.com/Aquilio)
+MIT © [Pixelplicity](https://github.com/pixelplicity)
