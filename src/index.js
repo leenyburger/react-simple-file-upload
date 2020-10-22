@@ -46,7 +46,7 @@ const SimpleFileUpload = ({ apiKey, onSuccess, width, height }) => {
     }
   })
   const handleIframeMessage = (e) => {
-    if (e.origin !== 'https://simplefileupload.herokuapp.com') {
+    if (e.origin !== 'https://app.simplefileupload.com') {
       return
     }
     // Handle errors (Need iframe to emit an uploadResult of error)
