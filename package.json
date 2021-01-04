@@ -1,6 +1,6 @@
 {
   "name": "react-simple-file-upload",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Simple File Upload as a React component",
   "author": "Curtis Cummings <curtis@pixelplicity.com>",
   "license": "MIT",
