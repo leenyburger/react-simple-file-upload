@@ -64,7 +64,7 @@ const SimpleFileUpload = ({ apiKey, onSuccess, width, height }) => {
   return (
     <iframe
       title={`Simple File Upload ${widgetId.current}`}
-      src={`https://simplefileupload.herokuapp.com/buckets/${key}?widgetId=${widgetId.current}`}
+      src={`https://app.simplefileupload.com/buckets/${key}?widgetId=${widgetId.current}`}
       className='widgetFrame'
       width={width}
       height={height}
