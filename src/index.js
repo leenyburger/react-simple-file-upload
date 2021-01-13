@@ -35,7 +35,6 @@ const debug = makeDebug('SimpleFileUpload')
 const SimpleFileUpload = ({ apiKey, onSuccess, width, height, preview }) => {
   const sfu = useSimpleFileUpload()
   const key = sfu.apiKey || apiKey
-  const preview = preview
   width = width || sfu.width
   height = height || sfu.height
   const widgetId = useRef(shortid.generate())
@@ -65,7 +64,7 @@ const SimpleFileUpload = ({ apiKey, onSuccess, width, height, preview }) => {
   return (
     <iframe
       title={`Simple File Upload ${widgetId.current}`}
-      src={`https://app.simplefileupload.com/buckets/${key}?widgetId=${widgetId.current}?widgetId=${preview}`}
+      src={`https://app.simplefileupload.com/buckets/${key}?widgetId=${widgetId.current}?preview=${preview}`}
       className='widgetFrame'
       width={width}
       height={height}
