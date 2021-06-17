@@ -4,7 +4,7 @@
 
 [![NPM](https://img.shields.io/npm/v/react-simple-file-upload.svg)](https://www.npmjs.com/package/react-simple-file-upload) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-Simple File Upload is currently invite only. If you want to test it out, please reach out to [Colleen Schnettler](https://twitter.com/leenyburger) for an API Key.
+Get an API key by signing up at [Simple File Upload](https://www.simplefileupload.com/).
 
 ## Install
 
@@ -28,4 +28,4 @@ const File Editor = () => (
 
 ## License
 
-MIT © [Pixelplicity](https://github.com/pixelplicity)
+MIT © [Simple File Upload](https://www.simplefileupload.com)
