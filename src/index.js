@@ -32,7 +32,7 @@ export const SimpleFileUploadProvider = ({
 // Add a localStorage entry with the key `debug` and value `SimpleFileUpload` to see debug messages
 const debug = makeDebug('SimpleFileUpload')
 
-const SimpleFileUpload = ({ apiKey, onSuccess, width, height, preview, text }) => {
+const SimpleFileUpload = ({ apiKey, onSuccess, onDrop, width, height, preview, text }) => {
   const sfu = useSimpleFileUpload()
   const key = sfu.apiKey || apiKey
   width = width || sfu.width
@@ -66,6 +66,17 @@ const SimpleFileUpload = ({ apiKey, onSuccess, width, height, preview, text }) =
       if (e.data.widgetId === widgetId.current) {
         debug('Success: %O', e.data)
         onSuccess(e.data.url)
+      }
+    }
+
+    if (e.data.event === 'dropStarted') {
+      if (e.data.widgetId !== widgetId.current) {
+        debug('Ignoring because widgetId does not match')
+        return
+      }
+      if (e.data.widgetId === widgetId.current) {
+        debug('Success: %O', e.data)
+        if(typeof onDrop === 'function') { onDrop(e.data.url); }
       }
     }
   }
