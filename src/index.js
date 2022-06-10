@@ -38,12 +38,6 @@ const SimpleFileUpload = ({ apiKey, onSuccess, onDrop, width, height, preview, t
   width = width || sfu.width
   height = height || sfu.height
   text = text || "Drop file to upload"
-  const resizeWidth = resizeWidth
-  const resizeHeight = resizeHeight
-  const resizeMethod = resizeMethod
-  const tag = tag
-  const accepted = accepted 
-  const maxFileSize = maxFileSize
 
   let small = "false"
 
