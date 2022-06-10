@@ -32,12 +32,18 @@ export const SimpleFileUploadProvider = ({
 // Add a localStorage entry with the key `debug` and value `SimpleFileUpload` to see debug messages
 const debug = makeDebug('SimpleFileUpload')
 
-const SimpleFileUpload = ({ apiKey, onSuccess, onDrop, width, height, preview, text }) => {
+const SimpleFileUpload = ({ apiKey, onSuccess, onDrop, width, height, preview, text, resizeWidth, resizeHeight, resizeMethod, tag, accepted, maxFileSize }) => {
   const sfu = useSimpleFileUpload()
   const key = sfu.apiKey || apiKey
   width = width || sfu.width
   height = height || sfu.height
   text = text || "Drop file to upload"
+  const resizeWidth = resizeWidth
+  const resizeHeight = resizeHeight
+  const resizeMethod = resizeMethod
+  const tag = tag
+  const accepted = accepted 
+  const maxFileSize = maxFileSize
 
   let small = "false"
 
@@ -80,10 +86,11 @@ const SimpleFileUpload = ({ apiKey, onSuccess, onDrop, width, height, preview, t
       }
     }
   }
+
   return (
     <iframe
       title={`Simple File Upload ${widgetId.current}`}
-      src={`https://app.simplefileupload.com/buckets/${key}?widgetId=${widgetId.current}&preview=${preview}&text=${text}&small=${small}`}
+      src={`https://app.simplefileupload.com/buckets/${key}?widgetId=${widgetId.current}&preview=${preview}&text=${text}&small=${small}&resizeWidth=${resizeWidth}&resizeHeight=${resizeHeight}&resizeMethod=${resizeMethod}&tag=${tag}&accepted=${accepted}&maxFileSize=${maxFileSize}`}
       className='widgetFrame'
       width={width}
       height={height}
