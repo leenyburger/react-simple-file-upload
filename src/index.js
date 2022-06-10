@@ -38,6 +38,7 @@ const SimpleFileUpload = ({ apiKey, onSuccess, onDrop, width, height, preview, t
   width = width || sfu.width
   height = height || sfu.height
   text = text || "Drop file to upload"
+  resizeMethod = resizeMethod || "contain"
 
   let small = "false"
 
