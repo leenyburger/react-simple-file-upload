@@ -68,9 +68,25 @@ const SimpleFileUpload = ({ apiKey, onSuccess, onDrop, width, height, preview, t
     }
 
     // Handle errors (Need iframe to emit an uploadResult of error)
-    if (e.data.uploadResult === 'success') {
+    // if (e.data.uploadResult === 'success') {
+    //   if(typeof onSuccess === 'function') {
+    //     onSuccess(e.data.url)
+    //   }
+    // }
+
+    if (e.data["event"] == 'fileUploadSuccess') {
       if(typeof onSuccess === 'function') {
-        onSuccess(e.data.url)
+        onSuccess(e.data.files)
+      }
+
+      console.log("The uploaded files are listed as an Array of File Objects below")
+      console.dir(e.data.files)
+
+      // Only call close iframe if the Add Files button was clicked. Explicitly sent via the "close" parameter 
+      // File count has to be recalculated, hence the null value
+      if(e.data.close === true) {
+        setModalVisible(false)
+        setNumberOfFiles(e.data.files.length)
       }
     }
 
@@ -129,15 +145,15 @@ const SimpleFileUpload = ({ apiKey, onSuccess, onDrop, width, height, preview, t
         </button>
       )}
 
-      {isModalVisible && <iframe
-          title={`Simple File Upload ${widgetId.current}`}
-          src={`https://app.simplefileupload.com/buckets/${key}?widgetId=${widgetId.current}&preview=${preview}&text=${text}&small=${small}&resizeWidth=${resizeWidth}&resizeHeight=${resizeHeight}&resizeMethod=${resizeMethod}&tag=${tag}&accepted=${accepted}&maxFileSize=${maxFileSize}&multiple=${multiple}&maxFiles=${maxFiles}&removeLinks=${removeLinks}`}
-          className='widgetFrame'
-          width={isModalVisible ? '100%' : width}
-          height={isModalVisible ? '100%' : height}
-          style={modalStyle}
-          frameBorder="no"
-        />}
+      <iframe
+        title={`Simple File Upload ${widgetId.current}`}
+        src={`https://app.simplefileupload.com/buckets/${key}?widgetId=${widgetId.current}&preview=${preview}&text=${text}&small=${small}&resizeWidth=${resizeWidth}&resizeHeight=${resizeHeight}&resizeMethod=${resizeMethod}&tag=${tag}&accepted=${accepted}&maxFileSize=${maxFileSize}&multiple=${multiple}&maxFiles=${maxFiles}&removeLinks=${removeLinks}`}
+        className='widgetFrame'
+        width={isModalVisible ? '100%' : width}
+        height={isModalVisible ? '100%' : height}
+        style={modalStyle}
+        frameBorder="no"
+      />
     </>
   );
 }
