@@ -83,7 +83,6 @@ const SimpleFileUpload = ({ apiKey, onSuccess, onDrop, width, height, preview, t
       console.dir(e.data.files)
 
       // Only call close iframe if the Add Files button was clicked. Explicitly sent via the "close" parameter 
-      // File count has to be recalculated, hence the null value
       if(e.data.close === true) {
         setModalVisible(false)
         setNumberOfFiles(e.data.files.length)
@@ -136,7 +135,7 @@ const SimpleFileUpload = ({ apiKey, onSuccess, onDrop, width, height, preview, t
     <>
       {multiple && (
         <button onClick={handleOpenClick} className = {buttonClass}>
-          {numberOfFiles > 0 ? `${numberOfFiles} uploaded` : buttonText}
+          {numberOfFiles > 0 ? `${numberOfFiles} files uploaded` : buttonText}
         </button>
       )}
 
