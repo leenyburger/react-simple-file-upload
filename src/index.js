@@ -40,6 +40,7 @@ const SimpleFileUpload = ({ apiKey, onSuccess, onDrop, width, height, preview, t
   text = text || "Drop file to upload"
   resizeMethod = resizeMethod || "contain"
   buttonText = buttonText || "Upload Files"
+  maxFiles = maxFiles || 10
 
   let small = "false"
 
@@ -68,16 +69,14 @@ const SimpleFileUpload = ({ apiKey, onSuccess, onDrop, width, height, preview, t
       return
     }
 
-    // Handle errors (Need iframe to emit an uploadResult of error)
-    // if (e.data.uploadResult === 'success') {
-    //   if(typeof onSuccess === 'function') {
-    //     onSuccess(e.data.url)
-    //   }
-    // }
-
-    if (e.data["event"] == 'fileUploadSuccess') {
+    if (e.data.event == 'fileUploadSuccess') {
       if(typeof onSuccess === 'function') {
-        onSuccess(e.data.files)
+        // Single uploader - return URL only for backwards compatibility
+        if (!isMultipleUploader && e.data.files.length == 1) {
+          onSuccess(e.data.url)
+        } else {
+          onSuccess(e.data.files)
+        }
       }
 
       console.log("The uploaded files are listed as an Array of File Objects below")
@@ -110,7 +109,7 @@ const SimpleFileUpload = ({ apiKey, onSuccess, onDrop, width, height, preview, t
 
   let modalStyle;
 
-  //Multiple Uploader has one set of styles, single has another
+  // Multiple Uploader has a different set of styles than Single Uploader
   if (isMultipleUploader) {
     if(isModalVisible) {
       modalStyle = {
