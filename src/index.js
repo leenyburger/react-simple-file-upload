@@ -102,7 +102,9 @@ const SimpleFileUpload = ({ apiKey, onSuccess, onDrop, width, height, preview, t
     }
   }
 
-  const handleOpenClick = () => {
+  const handleOpenClick = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
     setModalVisible(true)
   }
 
